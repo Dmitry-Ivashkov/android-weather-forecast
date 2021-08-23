@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="kotlinx.coroutines.flow.StateFlow&lt;com.example.weather.Data>" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/temperature"
+            style="@style/temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text='@{data.temp + "℃"}'
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/day_of_week"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/weather"
+            style="@style/weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{data.weather}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperature"
+            app:layout_constraintVertical_bias="0.015" />
+
+        <TextView
+            android:id="@+id/city_pager"
+            style="@style/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.city}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weather"
+            app:layout_constraintVertical_bias="0.065" />
+
+        <TextView
+            android:id="@+id/day_of_week"
+            style="@style/day_of_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.day_of_week}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.225" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string-array name="cities">
+        <item>Minsk</item>
+        <item>Brest</item>
+        <item>Vitebsk</item>
+        <item>Grodno</item>
+<!--        Grodno Oblast-->
+        <item>Mahilyow</item>
+    </string-array>
+    <integer-array name="cities_id">
+        <item>625144</item>
+        <item>629634</item>
+        <item>620127</item>
+        <item>628035</item>
+        <item>625665</item>
+    </integer-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

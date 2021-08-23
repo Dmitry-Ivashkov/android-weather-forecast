@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text" parent="@style/TextAppearance.AppCompat.Body2">
+
+    </style>
+
+    <style name="temperature" parent="text">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">42sp</item>
+    </style>
+
+    <style name="weather" parent="text">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="city" parent="text">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="day_of_week" parent="text">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">42sp</item>
+    </style>
+</resources>
