@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
-        android:name="com.example.weather.ViewPagerFragment"
+        android:name="com.example.weather.PagesWeatherFragment"
         android:label="ViewPagerFragment">
         <argument
             android:name="city"

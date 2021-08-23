@@ -1,48 +1,45 @@
 package com.example.weather
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weather.databinding.ViewPagerItemBinding
+import com.example.weather.databinding.PagesWeatherItemBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.*
 
-class ViewPagerAdapter(
+class PagesWeatherAdapter(
     private val array: StateFlow<List<Data>>,
     val lifecycle: Lifecycle
-) : RecyclerView.Adapter<ViewPager2ViewHolder>() {
+) : RecyclerView.Adapter<PagesWeatherViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ViewPager2ViewHolder {
-
-
-        return ViewPager2ViewHolder(
-            ViewPagerItemBinding.inflate(
+    ): PagesWeatherViewHolder =
+        PagesWeatherViewHolder(
+            PagesWeatherItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
         )
-    }
 
-    override fun onBindViewHolder(holder: ViewPager2ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PagesWeatherViewHolder, position: Int) {
         holder.binding.lifecycleOwner = LifecycleOwner { lifecycle }
 
         holder.binding.data = array
             .mapLatest { list -> list[position] }
             .stateIn(
                 GlobalScope,
-                SharingStarted.Eagerly, array.value[position]
+                SharingStarted.Eagerly,
+                array.value[position]
             )
     }
 
-    override fun getItemCount(): Int = ViewPagerFragment.CountPages
+    override fun getItemCount(): Int = PagesWeatherFragment.CountPages
 }
 
-class ViewPager2ViewHolder(val binding: ViewPagerItemBinding) :
+class PagesWeatherViewHolder(val binding: PagesWeatherItemBinding) :
     RecyclerView.ViewHolder(binding.root)

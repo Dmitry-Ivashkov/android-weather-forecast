@@ -11,19 +11,14 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
-import androidx.viewpager2.widget.ViewPager2
-import com.example.weather.databinding.ViewPager2Binding
+import com.example.weather.databinding.PagesWeatherBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
-class ViewPagerFragment : Fragment() {
+class PagesWeatherFragment : Fragment() {
 
     var listWeatherInDataFormat: List<Data> = defaultList
         private set
@@ -32,13 +27,13 @@ class ViewPagerFragment : Fragment() {
     var city: String? = null
         private set
 
-    lateinit var binding: ViewPager2Binding
+    lateinit var binding: PagesWeatherBinding
     private var dialog: Dialog? = null
 
     lateinit var cityNames: Array<String>
     lateinit var cityIds: Array<Int>
 
-    val args: ViewPagerFragmentArgs by navArgs()
+    val args: PagesWeatherFragmentArgs by navArgs()
 
     companion object {
 
@@ -60,7 +55,7 @@ class ViewPagerFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ViewPager2Binding.inflate(inflater, container, false)
+        binding = PagesWeatherBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = LifecycleOwner { lifecycle }
         return binding.root
     }
@@ -78,20 +73,23 @@ class ViewPagerFragment : Fragment() {
             })
             setOnCancelListener { viewModel.clickCancelDialog(parentFragmentManager) }
         }
+//        binding.viewPager2.visibility = View.INVISIBLE
         dialog?.show()
 
         viewModel.setCityNamesAndIds(cityNames, cityIds)
         viewModel.setCity(city)
 
         val newListData = viewModel.listData.mapLatest {
-            if (it != defaultList)
+            if (it != defaultList) {
                 dialog?.dismiss()
+//                binding.viewPager2.visibility = View.VISIBLE
+            }
             it
         }.stateIn(
             GlobalScope,
             SharingStarted.Eagerly, defaultList
         )
-        binding.viewPager2.adapter = ViewPagerAdapter(newListData, lifecycle)
+        binding.viewPager2.adapter = PagesWeatherAdapter(newListData, lifecycle)
 
     }
 
