@@ -3,26 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/itemFragment">
+    app:startDestination="@id/ListCityFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.weather.MainActivity"
-        android:label="MainActivity" />
     <fragment
-        android:id="@+id/itemFragment"
+        android:id="@+id/ListCityFragment"
         android:name="com.example.weather.ListCityFragment"
-        android:label="fragment_item_list"
+        android:label="list_city"
         tools:layout="@layout/list_city">
         <action
-            android:id="@+id/action_itemFragment_to_viewPagerFragment2"
-            app:destination="@id/viewPagerFragment"
-            app:popUpTo="@id/itemFragment" />
+            android:id="@+id/action_ListCityFragment_to_PagesWeatherFragment"
+            app:destination="@id/PagesWeatherFragment" />
     </fragment>
     <fragment
-        android:id="@+id/viewPagerFragment"
+        android:id="@+id/PagesWeatherFragment"
         android:name="com.example.weather.PagesWeatherFragment"
-        android:label="ViewPagerFragment">
+        android:label="PagesWeatherFragment">
         <argument
             android:name="city"
             app:argType="string" />

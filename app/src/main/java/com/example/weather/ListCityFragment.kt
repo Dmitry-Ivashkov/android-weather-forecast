@@ -39,7 +39,7 @@ class ListCityFragment : Fragment() {
                 resources.getStringArray(R.array.cities).toList()
             ) { item ->
                 findNavController().navigate(
-                    ListCityFragmentDirections.actionItemFragmentToViewPagerFragment2(item)
+                    ListCityFragmentDirections.actionListCityFragmentToPagesWeatherFragment(item)
                 )
             }
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
