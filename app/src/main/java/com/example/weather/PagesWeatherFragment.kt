@@ -75,7 +75,8 @@ class PagesWeatherFragment : Fragment() {
                 visibility = ProgressBar.VISIBLE
                 isClickable = false
             })
-            setOnCancelListener { viewModel.clickCancelDialog(parentFragmentManager) }
+//            setOnCancelListener {  }
+            this.setCancelable(false)
         }
         binding.root.visibility = View.INVISIBLE
         dialog?.show()

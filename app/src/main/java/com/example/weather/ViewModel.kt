@@ -85,10 +85,6 @@ class ViewModel @Inject constructor(
     }
         ?: flow { emit(defaultList) }
 
-    fun clickCancelDialog(fragmentManager: FragmentManager) {
-        fragmentManager.popBackStack()
-    }
-
     companion object {
         private const val NAN = "NAN"
 
