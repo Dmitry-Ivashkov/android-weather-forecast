@@ -1,11 +1,14 @@
 package com.example.weather
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.window.Dialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +24,8 @@ class ListCityFragment : Fragment() {
     lateinit var binding: ListCityBinding
     private val recyclerView
         get() = binding.list
+
+    private val viewModel: ViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -38,9 +43,17 @@ class ListCityFragment : Fragment() {
             adapter = ListCityAdapter(
                 resources.getStringArray(R.array.cities).toList()
             ) { item ->
-                findNavController().navigate(
-                    ListCityFragmentDirections.actionListCityFragmentToPagesWeatherFragment(item)
-                )
+                if (viewModel.isConected()) {
+                    findNavController().navigate(
+                        ListCityFragmentDirections.actionListCityFragmentToPagesWeatherFragment(item)
+                    )
+                } else {
+                    object : AlertDialog(context) {}
+                        .run {
+                            setMessage("нет доступа к интернету")
+                            show()
+                        }
+                }
             }
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL).apply {
                 ContextCompat.getDrawable(context, R.drawable.item_divider)?.let { setDrawable(it) }

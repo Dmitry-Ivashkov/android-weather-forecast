@@ -38,6 +38,8 @@ class ViewModel @Inject constructor(
         model.setCity(city)
     }
 
+    fun isConected() = networkManager.isConected()
+
 
     private fun getCityWeather(
         cityNames: Array<String>,

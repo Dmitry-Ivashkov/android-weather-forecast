@@ -1,5 +1,12 @@
 package com.example.weather
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import android.support.annotation.RequiresApi
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
@@ -10,25 +17,25 @@ import retrofit2.http.Query
 import javax.inject.Inject
 
 
-class NetworkManager @Inject constructor(/*private val connectivityManager: ConnectivityManager*/) {
+class NetworkManager @Inject constructor(@ApplicationContext val applicationContext: Context) {
     companion object {
         const val REQUEST_BY_CITY_ID = 1
     }
-//    @SuppressLint("NewApi")
-//    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-//    fun isConected(): Boolean {
-////        val connectivityManager =
-////            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-//        val networkCapabilities = connectivityManager.activeNetwork ?: return false
-//        val actNw =
-//            connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
-//        return when {
-//            actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-//            actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-//            actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-//            else -> false
-//        }
-//    }
+    @SuppressLint("NewApi")
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    fun isConected(): Boolean {
+        val connectivityManager =
+            applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkCapabilities = connectivityManager.activeNetwork ?: return false
+        val actNw =
+            connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
+        return when {
+            actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+            actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+            actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
+            else -> false
+        }
+    }
 
     object RetrofitClient {
         private var retrofit: Retrofit? = null
