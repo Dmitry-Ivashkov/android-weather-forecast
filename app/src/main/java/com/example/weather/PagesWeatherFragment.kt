@@ -14,8 +14,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.navArgs
 import com.example.weather.databinding.PagesWeatherBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
+import kotlin.coroutines.coroutineContext
 
 @AndroidEntryPoint
 class PagesWeatherFragment : Fragment() {
@@ -73,23 +77,25 @@ class PagesWeatherFragment : Fragment() {
             })
             setOnCancelListener { viewModel.clickCancelDialog(parentFragmentManager) }
         }
-//        binding.viewPager2.visibility = View.INVISIBLE
+        binding.root.visibility = View.INVISIBLE
         dialog?.show()
 
         viewModel.setCityNamesAndIds(cityNames, cityIds)
         viewModel.setCity(city)
 
-        val newListData = viewModel.listData.mapLatest {
+        val listData = viewModel.listData.mapLatest {
             if (it != defaultList) {
                 dialog?.dismiss()
-//                binding.viewPager2.visibility = View.VISIBLE
+                CoroutineScope(coroutineContext).launch(Dispatchers.Main) {
+                    binding.root.visibility = View.VISIBLE
+                }
             }
             it
         }.stateIn(
             GlobalScope,
             SharingStarted.Eagerly, defaultList
         )
-        binding.viewPager2.adapter = PagesWeatherAdapter(newListData, lifecycle)
+        binding.viewPager2.adapter = PagesWeatherAdapter(listData, lifecycle)
 
     }
 
