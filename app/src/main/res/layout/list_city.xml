@@ -11,5 +11,5 @@
     android:scrollbars="vertical"
     android:verticalScrollbarPosition="right"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ItemFragment"
-    tools:listitem="@layout/fragment_item" />
+    tools:context=".ListCityFragment"
+    tools:listitem="@layout/list_city_item" />

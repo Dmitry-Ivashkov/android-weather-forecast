@@ -11,13 +11,12 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavHost {
-    private var fragmentList: ItemFragment? = null
-    private val viewModel: ViewModel by viewModels()
+//    private var fragmentList: ListCityFragment? = null
+//    private val viewModel: ViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }

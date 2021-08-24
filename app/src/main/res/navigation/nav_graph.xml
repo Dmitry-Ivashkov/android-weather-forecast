@@ -11,9 +11,9 @@
         android:label="MainActivity" />
     <fragment
         android:id="@+id/itemFragment"
-        android:name="com.example.weather.ItemFragment"
+        android:name="com.example.weather.ListCityFragment"
         android:label="fragment_item_list"
-        tools:layout="@layout/fragment_item_list">
+        tools:layout="@layout/list_city">
         <action
             android:id="@+id/action_itemFragment_to_viewPagerFragment2"
             app:destination="@id/viewPagerFragment"

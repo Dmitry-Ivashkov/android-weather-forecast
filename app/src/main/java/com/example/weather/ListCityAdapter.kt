@@ -1,20 +1,19 @@
 package com.example.weather
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weather.databinding.FragmentItemBinding
+import com.example.weather.databinding.ListCityItemBinding
 
-class MyItemRecyclerViewAdapter(
+class ListCityAdapter(
     private val values: List<String>,
     private val listener: (String) -> Unit
-) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<ListCityAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            FragmentItemBinding.inflate(
+            ListCityItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -32,7 +31,7 @@ class MyItemRecyclerViewAdapter(
 
     override fun getItemCount(): Int = values.size
 
-    class ViewHolder(binding: FragmentItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(binding: ListCityItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val contentView: TextView = binding.city
     }
 
