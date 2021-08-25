@@ -1,4 +1,4 @@
-package com.example.weather
+package com.example.weather.ui
 
 import android.app.Dialog
 import android.graphics.Color
@@ -12,6 +12,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.fragment.navArgs
+import com.example.weather.R
+import com.example.weather.viewModels.ViewModel
+import com.example.weather.dataClasses.Data
 import com.example.weather.databinding.PagesWeatherBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.example.weather
+package com.example.weather.managers
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,6 +6,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.support.annotation.RequiresApi
+import com.example.weather.dataClasses.AllWeather
 import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.ResponseBody
 import retrofit2.Call

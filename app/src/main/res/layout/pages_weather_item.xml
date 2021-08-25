@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="kotlinx.coroutines.flow.StateFlow&lt;com.example.weather.Data>" />
+            type="kotlinx.coroutines.flow.StateFlow&lt;com.example.weather.dataClasses.Data>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,11 +1,11 @@
-package com.example.weather
+package com.example.weather.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavHost
 import androidx.navigation.Navigation
+import com.example.weather.R
 import com.example.weather.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

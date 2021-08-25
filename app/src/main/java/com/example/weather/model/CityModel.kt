@@ -1,4 +1,4 @@
-package com.example.weather
+package com.example.weather.model
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject

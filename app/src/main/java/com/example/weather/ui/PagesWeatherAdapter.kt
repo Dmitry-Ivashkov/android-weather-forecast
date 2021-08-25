@@ -1,10 +1,11 @@
-package com.example.weather
+package com.example.weather.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.example.weather.dataClasses.Data
 import com.example.weather.databinding.PagesWeatherItemBinding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.*

@@ -1,4 +1,4 @@
-package com.example.weather
+package com.example.weather.dataClasses
 
 data class Data(
     val temp: Int,

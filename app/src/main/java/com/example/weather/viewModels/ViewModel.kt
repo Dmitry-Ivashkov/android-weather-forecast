@@ -1,8 +1,10 @@
-package com.example.weather
+package com.example.weather.viewModels
 
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
-import com.example.weather.PagesWeatherFragment.Companion.defaultList
+import com.example.weather.ui.PagesWeatherFragment.Companion.defaultList
+import com.example.weather.dataClasses.Data
+import com.example.weather.managers.NetworkManager
+import com.example.weather.model.CityModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.GlobalScope
